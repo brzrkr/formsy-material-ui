@@ -22,12 +22,17 @@ let FormsyCheckbox = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    var _value = this.getValue();
+    var defaultChecked = this.props.defaultChecked;
+    if(typeof _value  === 'undefined' )
+      _value = typeof defaultChecked !== 'undefined' ? defaultChecked : false
+
     return (
       <Checkbox
         {...this.props}
         ref={this._setMuiComponentAndMaybeFocus}
         onCheck={this.handleValueChange}
-        checked={this.getValue()}
+        checked={_value}
       />
     );
   }
